@@ -3,8 +3,9 @@
 Guidance for Claude Code working in this repository. Read this whole file at the
 start of every session.
 
-Full product brief (the source of truth for *what* we're building):
-https://claude.ai/artifact/V5LV9RS7DiwKPyCtUA4Cua
+Full product brief (the source of truth for *what* we're building), v2 of
+2026-10-22: https://claude.ai/artifact/PfQ9DNnPBUyxnapJSEbh66
+(v1, written before any code: https://claude.ai/artifact/V5LV9RS7DiwKPyCtUA4Cua)
 
 Detailed decision factors, weightings, tunable parameters, and facts to verify:
 `ENGINE_NUANCES.md`. Read the relevant section before building any engine layer.
