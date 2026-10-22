@@ -117,8 +117,8 @@ Line numbers drift as we edit; search by function name.
 | `extract_game_state` | 3362 | Snapshots state (hands/discards left, dollars, cards, jokers) | Reuse for opt-in logs |
 | `install_evaluate_play_wrapper` | 3505 | Hooks `G.FUNCS.evaluate_play`, runs when the player plays a hand | **Where Phase 1 grading hooks in** |
 
-Upstream also has its own `CLAUDE.md` (scoring pipeline details) — read it
-before editing the scorer.
+Upstream also has its own `CLAUDE.md` (scoring pipeline details), kept as
+`UPSTREAM_CLAUDE.md` after the fork. Read it before editing the scorer.
 
 ## Phase 1 plan (first coding work)
 
@@ -127,7 +127,16 @@ Start only after the first-session checklist (`FIRST_SESSION.md`) is done
 in-game, git set up).
 
 1. Fork upstream into our repo; rename the mod (id, name, json) to Balatro
-   Trainer; keep upstream's LICENSE notice.
+   Trainer; keep upstream's LICENSE notice. Notes from a trial merge
+   (2026-10-22):
+   - Bring it in with `git pull https://github.com/JCMexplains/balatro-best-hand
+     main --allow-unrelated-histories` so upstream's history comes along.
+   - It conflicts on `.gitignore`, `CLAUDE.md` and `README.md`. Keep ours for
+     `CLAUDE.md` and `README.md`; save upstream's `CLAUDE.md` as
+     `UPSTREAM_CLAUDE.md`. The two `.gitignore` files are nearly identical.
+   - Delete upstream's `.github/workflows/thunderstore-release.yml`. It
+     publishes under JCMexplains' Thunderstore name on every `v*` tag.
+   - Our CI (`.github/workflows/test.yml`) passes on upstream's Lua files.
 2. Make `analyze_hand_inner` return the **full** ranked list, not just top 2.
    Verify F2 still prints the same top 2.
 3. In the `evaluate_play` wrapper, compute a grade with
