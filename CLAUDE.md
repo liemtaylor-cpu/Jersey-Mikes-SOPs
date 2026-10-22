@@ -130,9 +130,23 @@ in-game, git set up).
    Trainer; keep upstream's LICENSE notice.
 2. Make `analyze_hand_inner` return the **full** ranked list, not just top 2.
    Verify F2 still prints the same top 2.
-3. In the `evaluate_play` wrapper, find the player's played combo in that list
-   and compute a grade. Print it to the console first; UI comes later.
-4. Grade rule for Phase 1 (provisional, refine in Phase 2):
+3. In the `evaluate_play` wrapper, compute a grade with
+   `grade.grade_play` and print it to the console first; UI comes later.
+   Notes from reading upstream (2026-10-22):
+   - **Trap:** inside the wrapper the played cards have already moved from
+     `G.hand` to `G.play`. `analyze_hand_inner` and `find_forced_card` read
+     `G.hand.cards`, so called as-is they'd analyze only the unplayed cards.
+     Make them take the full pre-play hand (played + held) as a parameter.
+   - The player's own score already exists: the wrapper calls
+     `compute_predicted_score(played, held)` (`fixture.predicted_score`), in
+     the order the cards were actually played. Use it instead of searching
+     the list, which stores each combo's best-order score. So grading needs
+     only the top score; step 2's full list is for showing alternatives.
+   - Read `chips_needed` before calling `original_evaluate_play`.
+   - The analysis costs one F2 press per played hand. Time it with F5 before
+     worrying; defer it with an event only if the game visibly hitches.
+4. Grade rule for Phase 1 (provisional, refine in Phase 2). Implemented in
+   `grade.lua`, tested by `lua test_grade.lua`:
    - Chips still needed = `G.GAME.blind.chips - G.GAME.chips`.
    - If **any** play clears the blind: every clearing play is Best; a play
      that fails to clear when one could is a **Blunder**.
