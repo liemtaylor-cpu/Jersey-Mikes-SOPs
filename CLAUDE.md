@@ -122,8 +122,9 @@ before editing the scorer.
 
 ## Phase 1 plan (first coding work)
 
-Start only after the first-session checklist is done (Lovely + Steamodded
-installed, `balatro_src/` extracted, upstream mod verified in-game, git set up).
+Start only after the first-session checklist (`FIRST_SESSION.md`) is done
+(Lovely + Steamodded installed, `balatro_src/` extracted, upstream mod verified
+in-game, git set up).
 
 1. Fork upstream into our repo; rename the mod (id, name, json) to Balatro
    Trainer; keep upstream's LICENSE notice.
