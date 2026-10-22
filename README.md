@@ -18,3 +18,6 @@ by JCMexplains (MIT).
 | `CLAUDE.md` | How the project works and the build plan. Read first. |
 | `ENGINE_NUANCES.md` | Every factor the engine weighs, with test cases. |
 | `HANDOFF.md` | History and reasoning from the planning chat. |
+| `FIRST_SESSION.md` | PC setup checklist: Lovely, Steamodded, `balatro_src/`. |
+| `grade.lua` | Phase 1 grade rule (Best … Blunder). Not hooked in yet. |
+| `test_grade.lua` | Tests for `grade.lua`. Run `lua test_grade.lua`. |

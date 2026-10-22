@@ -641,3 +641,5 @@ Search the Lua source and record file + line next to each in this file.
 - [ ] Rental cost per round; Perishable round count
 - [ ] Wheel of Fortune edition weights (believed 50% Foil / 35% Holo / 15% Poly on a hit)
 - [ ] Which game functions advance the RNG (so the mod never calls them)
+- [ ] A blind is beaten at exactly the required chips (`>=`, not `>`); `grade.lua` assumes `>=`
+- [ ] Whether `G.GAME.current_round.hands_left` is already decremented when `G.FUNCS.evaluate_play` runs (decides how the hook computes `is_last_hand`)
