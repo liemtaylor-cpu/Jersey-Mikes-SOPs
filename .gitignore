@@ -1,0 +1,19 @@
+# Editor / OS cruft
+.vscode/
+.idea/
+.claude/
+*.swp
+.DS_Store
+Thumbs.db
+__pycache__/
+
+# Runtime debug dumps
+card_dump.txt
+best_hand_captures/
+
+# Local extraction of Balatro's Lua source. It's the game's code: never
+# commit or ship it.
+balatro_src/
+
+# Release artifacts
+dist/
